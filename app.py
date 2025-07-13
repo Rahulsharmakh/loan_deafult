@@ -52,7 +52,8 @@ def predict():
         }
 
         # 🔁 Replace this with your actual Hugging Face Space URL
-        api_url = "https://Rahul151004-loan-prediction-classification.hf.space/predict"
+        api_url = "https://rahul151004-loan-default-clf.hf.space/predict"
+
 
         # Send request
         response = requests.post(api_url, json=data)

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Prediction Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive scaling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="card shadow p-4">
+                    <h2 class="mb-4 text-center">Loan Prediction Form</h2>
+                    <form action="{{ url_for('predict') }}" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Age">Age (18-75):</label>
+                                <input type="number" class="form-control" id="Age" name="Age" min="18" max="75" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Income">Annual Income($):</label>
+                                <input type="number" class="form-control" id="Income" name="Income" min="0" step="0.01" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="LoanAmount">Loan Amount($):</label>
+                                <input type="number" class="form-control" id="LoanAmount" name="LoanAmount" min="1000" step="0.01" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="CreditScore">Credit Score (300–850):</label>
+                                <input type="number" class="form-control" id="CreditScore" name="CreditScore" min="300" max="850" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="MonthsEmployed">Months Employed:</label>
+                                <input type="number" class="form-control" id="MonthsEmployed" name="MonthsEmployed" min="0" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="NumCreditLines">Number of Credit Lines:</label>
+                                <input type="number" class="form-control" id="NumCreditLines" name="NumCreditLines" min="0" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="InterestRate">Interest Rate (%):</label>
+                                <input type="number" class="form-control" id="InterestRate" name="InterestRate" min="0" max="100" step="0.01" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="LoanTerm">Loan Term (Months):</label>
+                                <input type="number" class="form-control" id="LoanTerm" name="LoanTerm" min="1" max="360" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="DTIRatio">Debt-to-Income Ratio (0–1):</label>
+                            <input type="number" class="form-control" id="DTIRatio" name="DTIRatio" min="0" max="1" step="0.01" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="Education">Education:</label>
+                                <select class="form-control" id="Education" name="Education" required>
+                                    <option disabled selected>Select Education</option>
+                                    <option value="High School">High School</option>
+                                    <option value="Bachelor's">Bachelor</option>
+                                    <option value="Master's">Master</option>
+                                    <option value="PhD">PhD</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="EmploymentType">Employment Type:</label>
+                                <select class="form-control" id="EmploymentType" name="EmploymentType" required>
+                                    <option disabled selected>Select Type</option>
+                                    <option value="Full-time">Full-Time</option>
+                                    <option value="Part-time">Part-Time</option>
+                                    <option value="Self-employed">Self-Employed</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="MaritalStatus">Marital Status:</label>
+                                <select class="form-control" id="MaritalStatus" name="MaritalStatus" required>
+                                    <option disabled selected>Select Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Divorced">Divorced</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="HasMortgage">Has Mortgage?</label>
+                                <select class="form-control" id="HasMortgage" name="HasMortgage" required>
+                                    <option value="No">No</option>
+                                    <option value="Yes" selected>Yes</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="HasDependents">Has Dependents?</label>
+                                <select class="form-control" id="HasDependents" name="HasDependents" required>
+                                    <option value="No">No</option>
+                                    <option value="Yes" selected>Yes</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="LoanPurpose">Loan Purpose:</label>
+                                <select class="form-control" id="LoanPurpose" name="LoanPurpose" required>
+                                    <option disabled selected>Select Purpose</option>
+                                    <option value="Home">Home</option>
+                                    <option value="Business">Business</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Auto">Auto</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="HasCoSigner">Has Co-Signer?</label>
+                            <select class="form-control" id="HasCoSigner" name="HasCoSigner" required>
+                                <option value="No" selected>No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Predict Loan Outcome</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
